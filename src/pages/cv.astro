@@ -1,0 +1,13 @@
+---
+import { render } from 'astro:content';
+import Layout from '../layouts/Layout.astro';
+import { page } from '../lib/site';
+import { contentFileUrl } from '../lib/content-files.mjs';
+const entry = await page('cv');
+const home = await page('home');
+const { Content } = await render(entry);
+const download = entry.data.download ? contentFileUrl(entry.filePath!, entry.data.download, import.meta.env.BASE_URL) : undefined;
+---
+<Layout title="CV" active="CV">
+  <article class="paper cv-paper"><header class="paper-heading"><p class="eyebrow">Curriculum vitae</p><h1>{home.data.title}</h1>{home.data.email && <a class="contact" href={`mailto:${home.data.email}`}>{home.data.email}</a>}{download && <p><a class="download-link" href={download} target="_blank" rel="noopener noreferrer">View PDF ↗<span class="sr-only"> (opens in a new tab)</span></a></p>}</header><div class="prose"><Content /></div></article>
+</Layout>

@@ -1,0 +1,25 @@
+---
+import { render } from 'astro:content';
+import Layout from '../layouts/Layout.astro';
+import Botanical from '../components/Botanical.astro';
+import ResearchCard from '../components/ResearchCard.astro';
+import { page, selectedResearch, url } from '../lib/site';
+const home = await page('home');
+const { Content } = await render(home);
+const entries = await selectedResearch();
+---
+<Layout active="Home">
+  <section class="home-intro" aria-labelledby="home-title">
+    <div class="home-copy">
+      {home.data.role && <p class="eyebrow">{home.data.role}</p>}
+      <h1 id="home-title">{home.data.title}<span class="name-dot">.</span></h1>
+      <div class="home-description"><Content /></div>
+      {home.data.email && <a class="contact" href={`mailto:${home.data.email}`}>{home.data.email} ↗</a>}
+    </div>
+    <Botanical />
+  </section>
+  <section class="work-section" aria-labelledby="selected-title">
+    <div class="section-heading"><h2 id="selected-title">Selected research</h2><a class="small-link" href={url('research/')}>All research <span aria-hidden="true">↗</span></a></div>
+    {entries.length > 0 ? <div class="research-grid">{entries.map((entry) => <ResearchCard entry={entry} />)}</div> : <p class="empty-state">Research will appear here soon.</p>}
+  </section>
+</Layout>

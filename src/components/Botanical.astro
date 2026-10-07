@@ -1,0 +1,17 @@
+---
+import { Image } from 'astro:assets';
+import cosmos from '../assets/pink-cosmos.png';
+---
+<figure class="botanical">
+  <Image
+    src={cosmos}
+    alt="A delicate botanical illustration of pink cosmos flowers."
+    width={480}
+    widths={[240, 480, 720]}
+    sizes="(max-width: 600px) 130px, 225px"
+    format="webp"
+    quality={80}
+    loading="eager"
+    decoding="async"
+  />
+</figure>

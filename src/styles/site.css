@@ -1,0 +1,150 @@
+:root {
+  color-scheme: light;
+  --paper: #fcfaf8;
+  --ink: #352f31;
+  --muted: #74676d;
+  --rose: #96536a;
+  --line: #e6dcda;
+  --sans: Arial, Helvetica, sans-serif;
+  font-family: 'STIX Two Text', Georgia, serif;
+  color: var(--ink);
+  background: var(--paper);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+* { box-sizing: border-box; }
+body { margin: 0; font-size: 17px; line-height: 1.65; }
+a { color: inherit; text-decoration: none; }
+img, svg { max-width: 100%; }
+img { height: auto; }
+h1, h2, h3, p, figure { margin: 0; }
+::selection { background: #edd4dd; color: #352f31; }
+:focus-visible { outline: 2px solid var(--rose); outline-offset: 5px; }
+main:focus { outline: none; }
+.shell { width: min(1040px, calc(100% - 80px)); margin-inline: auto; }
+.site-header { min-height: 108px; display: flex; align-items: center; justify-content: space-between; gap: 24px; border-bottom: 1px solid var(--line); }
+.brand { display: inline-flex; align-items: center; gap: 13px; font-size: 25px; letter-spacing: -.6px; }
+.brand-flower { width: 43px; height: 43px; color: var(--rose); flex: none; }
+nav { display: flex; gap: 32px; font: 13px/1.5 var(--sans); }
+nav a { padding-block: 11px; border-bottom: 1px solid transparent; }
+nav a:hover, nav a[aria-current='page'] { border-bottom-color: var(--rose); }
+.nav-arrow { margin-left: 5px; color: var(--rose); font-size: 11px; }
+.home-intro { display: grid; grid-template-columns: 1.25fr 1fr; align-items: center; gap: 50px; padding: 25px 0 35px; min-height: 355px; }
+.home-copy h1 { font-size: clamp(46px, 6vw, 74px); font-weight: 400; letter-spacing: -2.5px; line-height: 1.15; }
+.name-dot { color: #b9798a; }
+.home-description { max-width: 430px; margin-top: 18px; color: var(--muted); font-size: 18px; line-height: 1.7; }
+.home-description p + p { margin-top: 8px; }
+.contact { display: inline-block; margin-top: 17px; font: 12px/1.6 var(--sans); color: var(--rose); overflow-wrap: anywhere; }
+.contact:hover, .small-link:hover, .article-topline a:hover, .article-bottom a:hover { text-decoration: underline; text-underline-offset: 4px; }
+.botanical { position: relative; display: grid; place-items: center; width: min(340px, 100%); aspect-ratio: 360/300; justify-self: center; }
+.botanical::before { content: ''; position: absolute; inset: 12px 8px; background-image: linear-gradient(#dbc9d04a 1px, transparent 1px), linear-gradient(90deg, #dbc9d04a 1px, transparent 1px); background-size: 30px 30px; mask-image: radial-gradient(ellipse, #000 20%, transparent 72%); }
+.botanical img { position: relative; display: block; width: auto; height: 100%; max-width: 100%; min-height: 0; object-fit: contain; }
+.eyebrow { font: 10px/1.6 var(--sans); letter-spacing: .13em; text-transform: uppercase; color: var(--muted); }
+.home-copy > .eyebrow { margin-bottom: 13px; }
+.section-heading { display: flex; align-items: baseline; justify-content: space-between; gap: 20px; padding-top: 24px; margin-bottom: 25px; border-top: 1px solid var(--line); }
+.section-heading h2 { font-size: 22px; font-weight: 400; letter-spacing: -.3px; }
+.small-link { font: 11px/1.5 var(--sans); color: var(--muted); }
+.small-link span { color: var(--rose); margin-left: 10px; }
+.research-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 42px 32px; }
+.research-card { min-width: 0; }
+.card-link { display: block; }
+.card-image { display: grid; place-items: center; aspect-ratio: 16/10; overflow: hidden; background: #f2ebe8; border: 1px solid var(--line); }
+.card-image img { display: block; width: 100%; height: 100%; object-fit: contain; }
+.cover-flower { width: 100px; color: #bd909c; }
+.card-meta { display: flex; justify-content: space-between; gap: 16px; margin-top: 16px; font: 9px/1.5 var(--sans); text-transform: uppercase; letter-spacing: .1em; color: var(--muted); }
+.research-card h3 { margin-top: 7px; font-size: 27px; font-weight: 400; line-height: 1.25; letter-spacing: -.5px; }
+.card-arrow { display: inline-block; margin-left: 10px; font: 16px var(--sans); color: var(--rose); }
+.research-card p { margin-top: 7px; color: var(--muted); font: 13px/1.6 var(--sans); max-width: 440px; }
+.card-link:hover h3 { color: var(--rose); }
+.card-link:hover .card-image { border-color: #bb8e9c; }
+.page-heading { padding: 47px 0 48px; }
+.page-heading h1 { font-size: clamp(44px, 6vw, 66px); line-height: 1.15; font-weight: 400; letter-spacing: -1.8px; }
+.page-heading p { max-width: 600px; margin-top: 16px; color: var(--muted); font-size: 18px; }
+.page-heading > .eyebrow { margin: 0 0 12px; }
+.about-layout { display: grid; grid-template-columns: 1.4fr 1fr; gap: 60px; border-top: 1px solid var(--line); padding-top: 32px; }
+.about-layout .botanical { align-self: start; width: 290px; }
+.about-prose { max-width: 600px; }
+.site-footer { display: flex; align-items: baseline; justify-content: space-between; gap: 24px; border-top: 1px solid var(--line); margin-top: 64px; padding: 25px 0 32px; font-size: 14px; }
+.site-footer > div { display: flex; gap: 28px; color: var(--muted); font: 10px/1.5 var(--sans); }
+.site-footer a:hover { color: var(--rose); }
+.article-topline, .article-bottom { max-width: 850px; margin-inline: auto; display: flex; justify-content: space-between; gap: 20px; color: var(--muted); font: 11px/1.5 var(--sans); }
+.article-topline { margin-block: 30px 22px; }
+.article-bottom { padding-top: 20px; margin-top: 28px; border-top: 1px solid var(--line); }
+.paper { max-width: 850px; margin-inline: auto; padding: clamp(25px, 5vw, 62px); background: #fff; border: 1px solid #eee6e3; }
+.paper-heading { text-align: center; padding-bottom: 27px; border-bottom: 1px solid var(--line); margin-bottom: 30px; }
+.paper-heading h1 { max-width: 650px; margin-inline: auto; font-weight: 600; font-size: clamp(28px, 3.5vw, 40px); letter-spacing: -.9px; line-height: 1.2; text-wrap: balance; }
+.paper-heading > p:not(.example-label, .eyebrow) { max-width: 590px; margin: 15px auto 0; color: var(--muted); font-size: 16px; }
+.example-label { color: var(--rose); font: 9px/1.6 var(--sans); letter-spacing: .06em; margin-bottom: 20px; }
+.prose { overflow-wrap: break-word; }
+.prose > :first-child { margin-top: 0; }
+.prose p, .prose ul, .prose ol, .prose blockquote, .prose pre, .prose table { margin: 0 0 20px; }
+.prose h2 { font-size: 23px; font-weight: 600; line-height: 1.3; margin: 32px 0 13px; letter-spacing: -.3px; }
+.prose h3 { font-size: 19px; font-weight: 600; margin: 24px 0 10px; }
+.prose a { color: var(--rose); text-decoration: underline; text-underline-offset: 3px; }
+.prose ul, .prose ol { padding-left: 23px; }
+.prose li + li { margin-top: 6px; }
+.prose img { display: block; max-width: 100%; height: auto; margin-inline: auto; }
+.prose p:has(> img) { margin-block: 26px 12px; }
+.prose p:has(> img) + p:has(> em:only-child) { font-size: 13px; line-height: 1.5; color: var(--muted); margin-bottom: 28px; }
+.prose blockquote { border-left: 2px solid #dab7c0; margin-left: 0; padding-left: 20px; color: var(--muted); }
+.prose pre { padding: 18px; overflow-x: auto; background: #f7f3f2 !important; border: 1px solid var(--line); font-size: 12px; }
+.prose :not(pre) > code { font-size: .82em; background: #f6f0f1; padding: 2px 4px; }
+.prose table { width: 100%; border-collapse: collapse; display: block; overflow-x: auto; font-size: 15px; }
+.prose th, .prose td { text-align: left; padding: 9px 16px 9px 0; border-bottom: 1px solid var(--line); }
+.prose th { font-weight: 600; }
+.prose hr { border: 0; border-top: 1px solid var(--line); margin-block: 30px; }
+.cv-paper { margin-top: 40px; }
+.cv-paper .eyebrow { margin-bottom: 17px; }
+.download-link { font: 12px/1.6 var(--sans); color: var(--rose); border-bottom: 1px solid #c9a1ae; }
+.empty-state { padding: 25px 0 70px; color: var(--muted); }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+.skip-link { position: fixed; left: 16px; top: -100px; background: white; padding: 10px 18px; z-index: 10; }
+.skip-link:focus { top: 16px; }
+@media (max-width: 760px) {
+  .shell { width: calc(100% - 40px); }
+  .site-header { min-height: 88px; gap: 14px; }
+  nav { gap: 22px; font-size: 12px; }
+  .brand { font-size: 21px; gap: 8px; }
+  .brand-flower { width: 34px; height: 34px; }
+  .home-intro { gap: 12px; min-height: 290px; padding-block: 30px; }
+  .home-copy h1 { font-size: 48px; letter-spacing: -1.8px; }
+  .home-description { font-size: 16px; }
+  .research-grid { gap: 32px 22px; }
+  .research-card h3 { font-size: 24px; }
+  .about-layout { gap: 25px; grid-template-columns: 1.5fr 1fr; }
+  .paper { padding: 30px; }
+  .page-heading { padding-block: 35px; }
+}
+@media (max-width: 600px) {
+  nav { gap: 20px; }
+  .brand span { display: none; }
+  .home-intro { grid-template-columns: 1fr .65fr; min-height: 260px; gap: 0; }
+  .home-intro .botanical { aspect-ratio: 3/4; max-height: 200px; }
+  .home-copy h1 { font-size: 42px; letter-spacing: -1.5px; }
+  .home-description { font-size: 15px; }
+  .home-copy .eyebrow { font-size: 8px; letter-spacing: .1em; }
+  .research-grid { grid-template-columns: 1fr; gap: 34px; }
+  .section-heading h2 { font-size: 20px; }
+  .section-heading { padding-top: 20px; margin-bottom: 20px; }
+  .about-layout { grid-template-columns: 1fr; }
+  .about-layout .botanical { width: 210px; }
+  .paper { padding: 27px 22px; }
+  .prose { font-size: 17px; }
+  .article-topline { font-size: 10px; }
+  .site-footer { margin-top: 45px; }
+  .example-label { font-size: 8px; }
+}
+@media (max-width: 360px) {
+  nav { gap: 15px; }
+  .home-intro { grid-template-columns: 1fr; }
+  .home-intro .botanical { width: 170px; justify-self: end; margin-top: -20px; }
+}
+@media print {
+  :root { background: white; color: black; }
+  .shell { width: 100%; }
+  .site-header, .site-footer, .article-topline, .article-bottom, .skip-link { display: none; }
+  .paper { max-width: none; border: 0; padding: 0; margin: 0; }
+  .prose img, .prose table { break-inside: avoid; }
+  h2, h3 { break-after: avoid; }
+}
