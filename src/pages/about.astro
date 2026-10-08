@@ -1,0 +1,12 @@
+---
+import { render } from 'astro:content';
+import Layout from '../layouts/Layout.astro';
+import Botanical from '../components/Botanical.astro';
+import { page } from '../lib/site';
+const entry = await page('about');
+const { Content } = await render(entry);
+---
+<Layout title={entry.data.title} active="About">
+  <header class="page-heading"><h1>{entry.data.title}<span class="name-dot">.</span></h1></header>
+  <div class="about-layout"><article class="prose about-prose"><Content /></article><Botanical /></div>
+</Layout>

@@ -1,0 +1,19 @@
+---
+import { Image } from 'astro:assets';
+import type { CollectionEntry } from 'astro:content';
+import Flower from './Flower.astro';
+import { url } from '../lib/site';
+interface Props { entry: CollectionEntry<'research'>; }
+const { entry } = Astro.props;
+const href = url(`research/${entry.id}/`);
+---
+<article class="research-card">
+  <a class="card-link" href={href}>
+    <div class="card-image">
+      {entry.data.cover ? <Image src={entry.data.cover} alt={entry.data.coverAlt || entry.data.title} widths={[360, 720, 1080]} sizes="(max-width: 600px) calc(100vw - 40px), (max-width: 1000px) 45vw, 490px" loading="lazy" decoding="async" /> : <Flower class="cover-flower" />}
+    </div>
+    <div class="card-meta"><span>{entry.data.type}</span><span>{entry.data.example ? 'Example' : entry.data.year}</span></div>
+    <h3>{entry.data.title}<span class="card-arrow" aria-hidden="true">↗</span></h3>
+    {entry.data.description && <p>{entry.data.description}</p>}
+  </a>
+</article>

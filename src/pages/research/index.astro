@@ -1,0 +1,11 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import ResearchCard from '../../components/ResearchCard.astro';
+import { research } from '../../lib/site';
+const entries = await research();
+---
+<Layout title="Research" active="Research">
+  <header class="page-heading"><h1>Research<span class="name-dot">.</span></h1><p>Posters, maps, presentations, and manuscripts.</p></header>
+  <div class="section-heading"><h2>All work</h2><span class="eyebrow">{entries.length.toString().padStart(2, '0')} entries</span></div>
+  {entries.length > 0 ? <div class="research-grid">{entries.map((entry) => <ResearchCard entry={entry} />)}</div> : <p class="empty-state">Research will appear here soon.</p>}
+</Layout>

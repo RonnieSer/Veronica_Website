@@ -1,0 +1,42 @@
+---
+import '@fontsource/stix-two-text/latin-400.css';
+import '@fontsource/stix-two-text/latin-600.css';
+import '../styles/site.css';
+import Flower from '../components/Flower.astro';
+import { page, url } from '../lib/site';
+interface Props { title?: string; description?: string; active?: 'Home' | 'Research' | 'About' | 'CV'; }
+const { title, description, active = 'Home' } = Astro.props;
+const home = await page('home');
+const name = home.data.title;
+const links = [{ label: 'Home', path: '' }, { label: 'Research', path: 'research/' }, { label: 'About', path: 'about/' }, { label: 'CV', path: 'cv/' }];
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description || home.data.description || `${name} — portfolio`} />
+    <meta name="theme-color" content="#fcfaf8" />
+    <title>{title ? `${title} · ${name}` : name}</title>
+    <link rel="icon" type="image/svg+xml" href={url('flower.svg')} />
+    <meta property="og:title" content={title ? `${title} · ${name}` : name} />
+    <meta property="og:description" content={description || home.data.description} />
+    <meta property="og:type" content="website" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <div class="shell">
+      <header class="site-header">
+        <a class="brand" href={url()} aria-label={`${name} — home`}>
+          <Flower class="brand-flower" />
+          {active !== 'Home' && <span>{name}</span>}
+        </a>
+        <nav aria-label="Main navigation">
+          {links.map(({ label, path }) => <a href={url(path)} aria-current={label === active ? 'page' : undefined} target={label === 'CV' ? '_blank' : undefined} rel={label === 'CV' ? 'noopener noreferrer' : undefined}>{label}{label === 'CV' && <><span aria-hidden="true" class="nav-arrow">↗</span><span class="sr-only"> (opens in a new tab)</span></>}</a>)}
+        </nav>
+      </header>
+      <main id="main" tabindex="-1"><slot /></main>
+      <footer class="site-footer"><span>{name}</span><div>{home.data.email && <a href={`mailto:${home.data.email}`}>Email ↗</a>}<span>© {new Date().getFullYear()}</span></div></footer>
+    </div>
+  </body>
+</html>
